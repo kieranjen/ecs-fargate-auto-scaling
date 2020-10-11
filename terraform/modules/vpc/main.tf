@@ -5,6 +5,7 @@ resource "aws_vpc" "vpc" {
 
   tags = {
     Name = "dev-to"
+    Project = "dev-to"
   }
 }
 
@@ -12,6 +13,8 @@ resource "aws_internet_gateway" "internal_gateway" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name = "dev-to"
+    Project = "dev-to"
+    Billing = "dev-to"
   }
 }
 
@@ -25,6 +28,7 @@ resource "aws_route_table" "route_table" {
 
   tags = {
     Name = "dev-to"
+    Project = "dev-to"
   }
 }
 
@@ -37,6 +41,7 @@ resource "aws_subnet" "elb_a" {
   map_public_ip_on_launch = true
   tags = {
     Name = "elb-a"
+    Project = "dev-to"
   }
 }
 
@@ -47,6 +52,7 @@ resource "aws_subnet" "elb_b" {
   map_public_ip_on_launch = true
   tags = {
     Name = "elb-b"
+    Project = "dev-to"
   }
 }
 
@@ -57,6 +63,7 @@ resource "aws_subnet" "elb_c" {
   map_public_ip_on_launch = true
   tags = {
     Name = "elb-c"
+    Project = "dev-to"
   }
 }
 
@@ -67,6 +74,7 @@ resource "aws_subnet" "ecs_a" {
   map_public_ip_on_launch = true
   tags = {
     Name = "ecs-a"
+    Project = "dev-to"
   }
 }
 
@@ -77,6 +85,7 @@ resource "aws_subnet" "ecs_b" {
   map_public_ip_on_launch = true
   tags = {
     Name = "ecs-b"
+    Project = "dev-to"
   }
 }
 
@@ -87,6 +96,7 @@ resource "aws_subnet" "ecs_c" {
   map_public_ip_on_launch = true
   tags = {
     Name = "ecs-c"
+    Project = "dev-to"
   }
 }
 
@@ -124,6 +134,7 @@ resource "aws_security_group" "load_balancer" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name = "load-balancer"
+    Project = "dev-to"
   }
 }
 
@@ -131,6 +142,7 @@ resource "aws_security_group" "ecs_task" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name = "ecs-task"
+    Project = "dev-to"
   }
 }
 

@@ -6,6 +6,12 @@ resource "aws_ecs_cluster" "dev_to" {
     name = "containerInsights"
     value = "enabled"
   }
+
+  tags = {
+    Name = "dev-to"
+    Project = "dev-to"
+    Billing = "dev-to"
+  }
 }
 
 resource "aws_ecs_task_definition" "dev_to" {
@@ -42,6 +48,12 @@ TASK_DEFINITION
   cpu = "512"
   execution_role_arn = var.ecs_role.arn
   task_role_arn = var.ecs_role.arn
+
+  tags = {
+    Name = "dev-to"
+    Project = "dev-to"
+    Billing = "dev-to"
+  }
 }
 
 resource "aws_ecs_service" "dev_to" {

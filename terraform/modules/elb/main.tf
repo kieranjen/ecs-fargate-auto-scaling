@@ -5,6 +5,11 @@ data "aws_route53_zone" "selected" {
 resource "aws_acm_certificate" "elb_cert" {
   domain_name = data.aws_route53_zone.selected.name
   validation_method = "DNS"
+
+  tags = {
+    Project = "dev-to"
+    Billing = "dev-to"
+  }
 }
 
 resource "aws_route53_record" "cert_validation" {
@@ -39,6 +44,12 @@ resource "aws_lb" "elb" {
     var.load_balancer_subnet_a.id,
     var.load_balancer_subnet_b.id,
     var.load_balancer_subnet_c.id]
+
+  tags = {
+    Name = "dev-to"
+    Project = "dev-to"
+    Billing = "dev-to"
+  }
 }
 
 resource "aws_lb_target_group" "ecs" {
@@ -56,6 +67,12 @@ resource "aws_lb_target_group" "ecs" {
     matcher             = "200"
     healthy_threshold   = 5
     unhealthy_threshold = 5
+  }
+
+  tags = {
+    Name = "dev-to"
+    Project = "dev-to"
+    Billing = "dev-to"
   }
 }
 
